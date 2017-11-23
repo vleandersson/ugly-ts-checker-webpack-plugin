@@ -143,9 +143,10 @@ class IncrementalChecker {
       this.watcher.watch();
     }
 
-    if (!this.programConfig) {
-      this.programConfig = IncrementalChecker.loadProgramConfig(this.programConfigFile);
-    }
+    // The origional code includes this check to avoid programConfig loading each iteration
+    // if (!this.programConfig) {
+    this.programConfig = IncrementalChecker.loadProgramConfig(this.programConfigFile);
+    // }
 
     if (!this.linterConfig && this.linterConfigFile) {
       this.linterConfig = IncrementalChecker.loadLinterConfig(this.linterConfigFile);
