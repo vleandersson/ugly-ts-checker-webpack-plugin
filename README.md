@@ -1,3 +1,7 @@
+# WRAPPER FOR Fork ts checker webpack plugin
+This wrapper removes the blocker for loading the tsconfig.json file only once, and loads it every iteration. Ugly fix for people with tsconfig problems with the origional package. All creed to the origional package described below!
+
+
 # Fork TS Checker Webpack Plugin
 [![Npm version](https://img.shields.io/npm/v/fork-ts-checker-webpack-plugin.svg?style=flat-square)](https://www.npmjs.com/package/fork-ts-checker-webpack-plugin)
 [![Build Status](https://travis-ci.org/Realytics/fork-ts-checker-webpack-plugin.svg?branch=master)](https://travis-ci.org/realytics/fork-ts-checker-webpack-plugin)

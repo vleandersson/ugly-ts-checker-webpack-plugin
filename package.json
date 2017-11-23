@@ -1,7 +1,7 @@
 {
-  "name": "fork-ts-checker-webpack-plugin",
-  "version": "0.2.9",
-  "description": "Runs typescript type checker and linter on separate process.",
+  "name": "ugly-ts-checker-webpack-plugin",
+  "version": "0.0.1",
+  "description": "Runs typescript type checker and linter on separate process. Wrapper to load tsconfig every iteration",
   "main": "lib/index.js",
   "files": [
     "lib"
@@ -17,7 +17,7 @@
     "lint:fix": "eslint ./lib ./test --fix"
   },
   "repository": {
-    "url": "https://github.com/Realytics/fork-ts-checker-webpack-plugin.git",
+    "url": "https://github.com/vleandersson/ugly-ts-checker-webpack-plugin",
     "type": "git"
   },
   "keywords": [
@@ -38,7 +38,7 @@
   "author": "Piotr Oleś <piotrek.oles@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues"
+    "url": "https://github.com/vleandersson/ugly-ts-checker-webpack-plugin/issues"
   },
   "devDependencies": {
     "@types/babel-code-frame": "^6.20.1",
