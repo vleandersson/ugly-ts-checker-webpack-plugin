@@ -33,18 +33,18 @@ interface Options {
 }
 
 /**
- * ForkTsCheckerWebpackPlugin
+ * UglyTsCheckerWebpackPlugin
  * Runs typescript type checker and linter (tslint) on separate process.
  * This speed-ups build a lot.
  *
  * Options description in README.md
  */
-class ForkTsCheckerWebpackPlugin {
+class UglyTsCheckerWebpackPlugin {
   static DEFAULT_MEMORY_LIMIT = 2048;
   static ONE_CPU = 1;
   static ALL_CPUS = os.cpus().length;
-  static ONE_CPU_FREE = Math.max(1, ForkTsCheckerWebpackPlugin.ALL_CPUS - 1);
-  static TWO_CPUS_FREE = Math.max(1, ForkTsCheckerWebpackPlugin.ALL_CPUS - 2);
+  static ONE_CPU_FREE = Math.max(1, UglyTsCheckerWebpackPlugin.ALL_CPUS - 1);
+  static TWO_CPUS_FREE = Math.max(1, UglyTsCheckerWebpackPlugin.ALL_CPUS - 2);
 
   options: Options;
   tsconfig: string;
@@ -98,13 +98,13 @@ class ForkTsCheckerWebpackPlugin {
     this.silent = options.silent === true; // default false
     this.async = options.async !== false; // default true
     this.checkSyntacticErrors = options.checkSyntacticErrors === true; // default false
-    this.workersNumber = options.workers || ForkTsCheckerWebpackPlugin.ONE_CPU;
-    this.memoryLimit = options.memoryLimit || ForkTsCheckerWebpackPlugin.DEFAULT_MEMORY_LIMIT;
+    this.workersNumber = options.workers || UglyTsCheckerWebpackPlugin.ONE_CPU;
+    this.memoryLimit = options.memoryLimit || UglyTsCheckerWebpackPlugin.DEFAULT_MEMORY_LIMIT;
     this.useColors = options.colors !== false; // default true
     this.colors = new chalk.constructor({ enabled: this.useColors });
     this.formatter = (options.formatter && isFunction(options.formatter))
       ? options.formatter
-      : ForkTsCheckerWebpackPlugin.createFormatter(options.formatter as 'default' | 'codeframe' || 'default', options.formatterOptions || {});
+      : UglyTsCheckerWebpackPlugin.createFormatter(options.formatter as 'default' | 'codeframe' || 'default', options.formatterOptions || {});
 
     this.tsconfigPath = undefined;
     this.tslintPath = undefined;
@@ -166,7 +166,7 @@ class ForkTsCheckerWebpackPlugin {
     } else {
       if (!tsconfigOk) {
         throw new Error(
-          'Cannot find "' + this.tsconfigPath + '" file. Please check webpack and ForkTsCheckerWebpackPlugin configuration. \n' +
+          'Cannot find "' + this.tsconfigPath + '" file. Please check webpack and UglyTsCheckerWebpackPlugin configuration. \n' +
           'Possible errors: \n' +
           '  - wrong `context` directory in webpack configuration' +
           ' (if `tsconfig` is not set or is a relative path in fork plugin configuration)\n' +
@@ -176,7 +176,7 @@ class ForkTsCheckerWebpackPlugin {
       }
       if (!tslintOk) {
         throw new Error(
-          'Cannot find "' + this.tslintPath + '" file. Please check webpack and ForkTsCheckerWebpackPlugin configuration. \n' +
+          'Cannot find "' + this.tslintPath + '" file. Please check webpack and UglyTsCheckerWebpackPlugin configuration. \n' +
           'Possible errors: \n' +
           '  - wrong `context` directory in webpack configuration' +
           ' (if `tslint` is not set or is a relative path in fork plugin configuration)\n' +
@@ -409,7 +409,7 @@ class ForkTsCheckerWebpackPlugin {
         this.logger.error(
           this.colors.red(
             'Type checking and linting aborted - probably out of memory. ' +
-            'Check `memoryLimit` option in ForkTsCheckerWebpackPlugin configuration.'
+            'Check `memoryLimit` option in UglyTsCheckerWebpackPlugin configuration.'
           )
         );
       }
@@ -497,4 +497,4 @@ class ForkTsCheckerWebpackPlugin {
   }
 }
 
-export = ForkTsCheckerWebpackPlugin;
+export = UglyTsCheckerWebpackPlugin;
