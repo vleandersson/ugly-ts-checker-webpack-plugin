@@ -226,11 +226,14 @@ class IncrementalChecker {
     });
 
     //Remove old lints
-    _this.files.keys.forEach(function (filePath) {
-      _this.files.mutateData(filePath, function (data) {
-	data.lints.splice(0, data.lints.length);
+    const keys = this.files.keys();
+    if (keys.length) {
+    keys.forEach(filePath => {
+        this.files.mutateData(filePath, data => {
+	  data.lints.splice(0, data.lints.length);
+        });
       });
-    });
+    }
 
     // set lints in files register
     this.linter.getResult().failures.forEach(lint => {
